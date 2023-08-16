@@ -11,10 +11,7 @@ function playerSelection() {
     return sign.toLocaleLowerCase();
 }
 
-function playRound(computerSelection) {
-    let sign = prompt("Please select your choice: Rock, Paper or Scissors");
-
-    let player = sign.toLocaleLowerCase();
+function playRound(player, computerSelection) {
 
     if (player == computerSelection) {
         return ("Draw! You chose " + player + " and Computer chose "+ computerSelection);
@@ -27,5 +24,11 @@ function playRound(computerSelection) {
     }
 }
 
-const computerSelection = getComputerChoice();
-console.log(playRound(computerSelection));
+function game(){
+    let player= prompt("Please select your choice: Rock, Paper or Scissors").toLocaleLowerCase();
+    const computerSelection = getComputerChoice();
+
+    return playRound(player, computerSelection);
+}
+
+console.log(game());
