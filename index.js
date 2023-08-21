@@ -1,3 +1,8 @@
+let playerScore = 0;
+let computerScore = 0;
+let winner = "";
+
+
 function getComputerChoice() {
     let arr = ["rock", "paper", "scissors"];
     let randomChoice = Math.floor(Math.random() * arr.length);
@@ -5,30 +10,56 @@ function getComputerChoice() {
 
 }
 
-function playerSelection() {
-    let sign = prompt("Please select your choice: Rock, Paper or Scissors");
-
-    return sign.toLocaleLowerCase();
-}
-
 function playRound(player, computerSelection) {
 
     if (player == computerSelection) {
-        return ("Draw! You chose " + player + " and Computer chose "+ computerSelection);
-    } else if ( (player == "paper") && (computerSelection=="rock") || 
-                (player == "rock") && (computerSelection=="scissors") || 
-                (player == "scissors") && (computerSelection==" paper")) {
-        return ("You win! " + player + " beats " + computerSelection);
+        return String("Draw! You chose " + player + " and Computer chose " + computerSelection);
+    }
+    if ((player == "paper") && (computerSelection == "rock") ||
+        (player == "rock") && (computerSelection == "scissors") ||
+        (player == "scissors") && (computerSelection == " paper")) {
+        return String("You win! " + player + " beats " + computerSelection);
+
     } else {
-        return ("You lose! " + computerSelection + " beats " + player);
+        return String("You lose! " + computerSelection + " beats " + player);
+
     }
 }
 
-function game(){
-    let player= prompt("Please select your choice: Rock, Paper or Scissors").toLocaleLowerCase();
-    const computerSelection = getComputerChoice();
+function game() {
+    
+    for (let i = 0; i < 5; i++) {
 
-    return playRound(player, computerSelection);
+        let player = prompt("Please select your choice: Rock, Paper or Scissors").toLocaleLowerCase();
+        const computerSelection = getComputerChoice();
+
+        let roundResult = playRound(player, computerSelection);
+
+        console.log(roundResult);
+
+        if (roundResult == String("You win! " + player + " beats " + computerSelection)) {
+            playerScore++;
+        } else if (roundResult == String("You lose! " + computerSelection + " beats " + player)) {
+            computerScore++;
+        }
+        
+    }
+    
+    if (playerScore > computerScore ) {
+        console.log("Game over! You win!");
+        playerScore = 0;
+        computerScore = 0;
+    } else if (computerScore > playerScore) {
+        console.log("Game Over! You lose!")
+        playerScore = 0;
+        computerScore = 0;
+    } else {
+        console.log("Game Over! Draw!");
+        playerScore = 0;
+        computerScore = 0;
+    }
+    
 }
 
-console.log(game());
+
+game();
