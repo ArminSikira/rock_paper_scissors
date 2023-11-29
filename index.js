@@ -26,40 +26,4 @@ function playRound(player, computerSelection) {
     }
 }
 
-function game() {
-    
-    for (let i = 0; i < 5; i++) {
 
-        let player = prompt("Please select your choice: Rock, Paper or Scissors").toLocaleLowerCase();
-        const computerSelection = getComputerChoice();
-
-        let roundResult = playRound(player, computerSelection);
-
-        console.log(roundResult);
-
-        if (roundResult == String("You win! " + player + " beats " + computerSelection)) {
-            playerScore++;
-        } else if (roundResult == String("You lose! " + computerSelection + " beats " + player)) {
-            computerScore++;
-        }
-        
-    }
-    
-    if (playerScore > computerScore ) {
-        console.log("Game over! You win!");
-        playerScore = 0;
-        computerScore = 0;
-    } else if (computerScore > playerScore) {
-        console.log("Game Over! You lose!")
-        playerScore = 0;
-        computerScore = 0;
-    } else {
-        console.log("Game Over! Draw!");
-        playerScore = 0;
-        computerScore = 0;
-    }
-    
-}
-
-
-game();
